@@ -52,7 +52,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This project provides a Docker image containing libguestfs, qemu, and other essential tools for virtual machine image manipulation. Based on Rocky Linux 9 minimal, this container is optimized for size and performance while offering the full functionality of libguestfs and associated tools.
+This project provides a Docker image containing libguestfs, qemu, and other essential tools for virtual machine image manipulation. Based on Rocky Linux 10 UBI, this container is optimized for size and performance while offering the full functionality of libguestfs and associated tools.
 
 ### Key Features
 

@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  libguestfs-tools:
+    image: ghcr.io/net-architect-cloud/docker-libguestfs-tools:latest
+    container_name: libguestfs-tools
+    privileged: true
+    volumes:
+      - ./images:/workspace/images
+      - ./shared:/workspace/shared
+    environment:
+      - LIBGUESTFS_BACKEND=direct
+      - LIBGUESTFS_DEBUG=0
+      - LIBGUESTFS_TRACE=0
+      - LIBGUESTFS_PROGRESS=1
+      - LIBGUESTFS_VERBOSE=0
+      - LIBGUESTFS_MEMSIZE=4096
+      - LIBGUESTFS_SMP=4
+    stdin_open: true
+    tty: true
+    working_dir: /workspace

@@ -1,9 +1,16 @@
 # Base image: Rocky Linux 10 UBI
 FROM rockylinux/rockylinux:10-ubi-init
 
-# Maintainer information
+# Maintainer and OCI labels
 LABEL maintainer="kevin@netarchitect.cloud"
-LABEL description="Container with libguestfs, qemu and image manipulation tools"
+LABEL org.opencontainers.image.title="LibGuestFS Tools Container"
+LABEL org.opencontainers.image.description="Container with libguestfs, qemu and image manipulation tools for VM image processing"
+LABEL org.opencontainers.image.authors="Kevin Allioli <kevin@netarchitect.cloud>"
+LABEL org.opencontainers.image.vendor="Net Architect Cloud"
+LABEL org.opencontainers.image.licenses="GPL-3.0"
+LABEL org.opencontainers.image.url="https://github.com/Net-Architect-Cloud/docker-libguestfs-tools"
+LABEL org.opencontainers.image.source="https://github.com/Net-Architect-Cloud/docker-libguestfs-tools"
+LABEL org.opencontainers.image.documentation="https://github.com/Net-Architect-Cloud/docker-libguestfs-tools/blob/main/README.md"
 
 # Environment configuration for libguestfs
 ENV LIBGUESTFS_BACKEND=direct \

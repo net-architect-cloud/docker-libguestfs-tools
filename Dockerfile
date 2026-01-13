@@ -16,6 +16,8 @@ ENV LIBGUESTFS_BACKEND=direct \
 
 # Installing dependencies and cleaning up in a single step to reduce image size
 RUN dnf -y update && \
+    dnf -y install epel-release && \
+    dnf config-manager --set-enabled crb && \
     dnf -y install --allowerasing --setopt=install_weak_deps=False --nodocs \
         # Virtualization tools
         qemu-img \
@@ -23,7 +25,6 @@ RUN dnf -y update && \
         libguestfs \
         libguestfs-tools-c \
         virt-v2v \
-        libvirt-daemon-kvm \
         # System and network tools
         curl \
         tar \

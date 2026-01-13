@@ -15,8 +15,7 @@ ENV LIBGUESTFS_BACKEND=direct \
     LIBGUESTFS_SMP=4
 
 # Installing dependencies and cleaning up in a single step to reduce image size
-RUN microdnf -y install dnf && \
-    dnf -y update && \
+RUN dnf -y update && \
     dnf -y install --allowerasing --setopt=install_weak_deps=False --nodocs \
         # Virtualization tools
         qemu-img \
@@ -50,7 +49,6 @@ RUN microdnf -y install dnf && \
         iproute && \
     # Aggressive cleanup to reduce image size
     dnf clean all && \
-    microdnf clean all && \
     rm -rf /var/cache/dnf /var/cache/yum /var/log/* /tmp/* /var/tmp/* && \
     rm -rf /usr/share/{doc,man,info}/* && \
     # Create working directory
@@ -64,3 +62,4 @@ WORKDIR /workspace
 
 # Default entry point
 CMD ["/bin/bash"]
+

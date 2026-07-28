@@ -41,7 +41,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0  # v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7
 
       - name: Compute version & tags
         id: meta
@@ -75,7 +75,7 @@ jobs:
       # doesn't move before the Node 20 removal date.
       - name: Build container image
         id: build
-        uses: redhat-actions/buildah-build@7a95fa7ee0f02d552a32753e7414641a04307056  # v2
+        uses: redhat-actions/buildah-build@9dc2ade9b5db229966b5025ae266311e12f349c4  # v2
         with:
           image: ${{ env.IMAGE_NAME }}
           tags: ${{ steps.meta.outputs.arch_tag }}
@@ -112,7 +112,7 @@ jobs:
 
       - name: Push per-arch image
         id: push
-        uses: redhat-actions/push-to-registry@5ed88d269cf581ea9ef6dd6806d01562096bee9c  # v2
+        uses: redhat-actions/push-to-registry@5860fc963bf8f2b3221773a023141612f010c469  # v2
         with:
           image: ${{ steps.build.outputs.image }}
           tags: ${{ steps.meta.outputs.arch_tag }}

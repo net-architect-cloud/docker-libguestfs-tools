@@ -75,7 +75,7 @@ jobs:
       # doesn't move before the Node 20 removal date.
       - name: Build container image
         id: build
-        uses: redhat-actions/buildah-build@9dc2ade9b5db229966b5025ae266311e12f349c4  # v2
+        uses: redhat-actions/buildah-build@719e3c40d8af9790c23eca13f7daa339f2867034  # v3
         with:
           image: ${{ env.IMAGE_NAME }}
           tags: ${{ steps.meta.outputs.arch_tag }}
@@ -104,7 +104,7 @@ jobs:
           fi
 
       - name: Log in to GHCR
-        uses: redhat-actions/podman-login@4934294ad0449894bcd1e9f191899d7292469603  # v1
+        uses: redhat-actions/podman-login@50c2d9a331bb67c8fdab99b86455fad05e2e3252  # v2
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.repository_owner }}
@@ -112,7 +112,7 @@ jobs:
 
       - name: Push per-arch image
         id: push
-        uses: redhat-actions/push-to-registry@5860fc963bf8f2b3221773a023141612f010c469  # v2
+        uses: redhat-actions/push-to-registry@94ade333c38ecc0e60e94785125d9a52ca423b37  # v3
         with:
           image: ${{ steps.build.outputs.image }}
           tags: ${{ steps.meta.outputs.arch_tag }}
@@ -197,7 +197,7 @@ jobs:
           } >> "$GITHUB_OUTPUT"
 
       - name: Log in to GHCR
-        uses: redhat-actions/podman-login@4934294ad0449894bcd1e9f191899d7292469603  # v1
+        uses: redhat-actions/podman-login@50c2d9a331bb67c8fdab99b86455fad05e2e3252  # v2
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.repository_owner }}
